@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+</head>
+
+<body>
+    <form method="post" action="">
+        <table cellspacing="0" cellpadding="4" width="100%" align="center" border="0">
+            <tr>
+                <td>
+                    <b class="h1" style="color: orange;">Search for a new Amazon Pickup Location</b>
+                    <br />
+                    Amazon Pickup locations offer package pickup at self-service Amazon Lockers and at staffed
+                    locations.
+                    <br />
+                    Please enter address, postal code, landmark, or Amazon Locker name.<br />
+                </td>
+            </tr>
+            <table cellspacing="2" cellpadding="2">
+                <tr>
+                    <td colspan="2">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b> Country/Region : </b>
+                    </td>
+                    <td>
+                        <select name="country" id="country" onchange="hideShowPickupType();">
+                            <option data-pickuptypeclass="us-pickup-option" value="US">
+                                United States
+                            </option>
+                            <option data-pickuptypeclass="united_states-pickup-option" value="United States">
+                                United States
+                            </option>
+                        </select>
+                    </td>
+                </tr>
+                <input type="hidden" name="pickupType" id="pickupType" value="All" />
+                <tr>
+
+                    <td align="left" valign="top">
+                        <input type="radio" name="searchCriteria" value="address" checked="checked" />&nbsp;
+                        <b>Search by Address:</b>
+                    </td>
+                    <td valign="top">
+                        <input type="text" name="address" size="30" maxlength="50"
+                            onfocus="searchCriteria[0].checked=true" value="" /> <br />
+                        <font size="-2">e.g.: 333 Boren Ave N, Seattle</font>
+                        <br />
+                    <td>
+                </tr>
+                <tr>
+                    <td align="left" valign="top">
+                        <input type="radio" name="searchCriteria" value="storeZip" />&nbsp;
+                        <b> Search by Zip Code: </b>
+                    </td>
+                    <td valign="top">
+                        <input type="text" name="storeZip" value="" size="5" maxlength="5"
+                            onfocus="searchCriteria[1].checked=true" />
+                        <font size="-2">&nbsp;e.g. 98109</font><br /><br />
+
+                    </td>
+                </tr>
+                <tr>
+                    <td align="left" valign="top">
+                        <input type="radio" name="searchCriteria" value="landmark" />&nbsp;
+                        <b>Search by Landmark:</b>&nbsp;&nbsp;
+                    </td>
+                    <td valign="top">
+                        <input type="text" name="landmark" size="30" maxlength="50" value=""
+                            onfocus="searchCriteria[2].checked=true" />
+                        <br />
+                        <font size="-2">e.g. Space Needle</font>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="left" valign="top">
+                        <input type="radio" name="searchCriteria" value="storeName" />&nbsp;
+                        <b>Search by Locker or Store Name:</b>
+                    </td>
+                    <td valign="top">
+                        <input type="text" name="storeName" size="30" maxlength="50"
+                            onfocus="searchCriteria[3].checked=true" value="" /> <br />
+                        <font size="-2">e.g.: Juno
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <br />
+                        <button type="button"
+                            style="color: black;background-color: orange;border-color:blue;">Search</button>
+                        <br /><br />
+                    </td>
+                    <td colspan="2">&nbsp;</td>
+                </tr>
+            </table>
+            </td>
+            </tr>
+        </table>
+    </form>
+</body>
+
+</html>
