@@ -1,11 +1,8 @@
 import React, { Component, Fragment } from "react";
 import ReactDOM from "react-dom";
-import Header from "./layout/Header";
-import Dashboard from "./leads/Dashboard";
-import { Provider } from "react-redux";
-import store from "../store";
 import Form from "./leads/Form";
 import LockersList from './LockersList';
+import {BrowserRouter as Router,Switch,Route} from "react-router-dom";
 class App extends Component {
   searchbyaddress=(address) =>{
     console.log(address)
@@ -25,9 +22,8 @@ class App extends Component {
   }
   render() {
     return (
-      <Provider store={store}>
+      <Router>
         <Fragment>
-
           <div className="container">
             <Form 
             searchbyaddress={this.searchbyaddress}
@@ -37,12 +33,10 @@ class App extends Component {
             queryby={this.queryby}
             />
             
-            
+            <LockersList/>
           </div>
-          <LockersList/>
         </Fragment>
-
-      </Provider>
+      </Router>
     );
   }
 }
