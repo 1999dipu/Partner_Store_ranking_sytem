@@ -5,6 +5,7 @@ import Dashboard from "./leads/Dashboard";
 import { Provider } from "react-redux";
 import store from "../store";
 import Form from "./leads/Form";
+import LockersList from './LockersList';
 class App extends Component {
   searchbyaddress=(address) =>{
     console.log(address)
@@ -26,7 +27,6 @@ class App extends Component {
     return (
       <Provider store={store}>
         <Fragment>
-          
 
           <div className="container">
             <Form 
@@ -39,6 +39,7 @@ class App extends Component {
             
             
           </div>
+          <LockersList/>
         </Fragment>
 
       </Provider>
