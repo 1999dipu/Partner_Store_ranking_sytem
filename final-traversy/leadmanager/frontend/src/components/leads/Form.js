@@ -28,7 +28,7 @@ export class Form extends Component {
 
         })
     
-        Axios.post("http://127.0.0.1:8000/api/leads/", data, {
+        Axios.post("/api/leads/", data, {
             headers: {
                 'Content-Type': 'application/json',
             }})
