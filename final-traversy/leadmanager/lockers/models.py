@@ -1,31 +1,32 @@
 from django.db import models
-
+from django.core.validators import RegexValidator
+from django.core.validators import MinLengthValidator
 # Create your models here.
 class Onboard(models.Model):
 	lockerid	=models.IntegerField(primary_key=True)
-	name		=models.CharField(max_length=250)
-	country		=models.CharField(max_length=100)
+	name		=models.CharField(max_length=250,validators=[RegexValidator(r'^[a-zA-Z ]+$',message='Numbers not allowed')])
+	country		=models.CharField(max_length=100,validators=[RegexValidator(r'^[a-zA-Z ]+$',message='Numbers not allowed')])
 	address 	=models.TextField()
-	zipcode 	=models.IntegerField()
+	zipcode 	=models.CharField(max_length=6,validators=[RegexValidator(r'^\d{1,10}$',message='Only numbers are allowed'), MinLengthValidator(6)])
 	total_slots =models.IntegerField()
 
 class Rating(models.Model):
-	lockerid	=models.IntegerField(primary_key=True)
+	lockerid	=models.ForeignKey(Onboard, on_delete=models.CASCADE,primary_key=True)
 	rating      =models.DecimalField(max_digits=2,decimal_places=1)
 
 class Throughput(models.Model):
-	lockerid	=models.IntegerField(primary_key=True)
+	lockerid	=models.ForeignKey(Onboard, on_delete=models.CASCADE,primary_key=True)
 	throughput  =models.FloatField()
 
 class Availability(models.Model):
-	lockerid		=models.IntegerField(primary_key=True)
-	non_del_days	=models.CharField('Non delivery days',max_length=7,default='0000000')
+	lockerid		=models.ForeignKey(Onboard, on_delete=models.CASCADE,primary_key=True)
+	non_del_days	=models.CharField('Non delivery days',max_length=7,default='0000000',validators=[RegexValidator(r'^\d{1,10}$',message='Letters not permissible'),MinLengthValidator(7)])
 	timings_open 	=models.TimeField()
 	timings_closed 	=models.TimeField()
 	status			=models.BooleanField()
 
 class Occupancy(models.Model):
-	lockerid		=models.IntegerField()
+	lockerid		=models.ForeignKey(Onboard, on_delete=models.CASCADE)
 	date			=models.DateField()
 	occupancy		=models.FloatField()	
 	class Meta:
