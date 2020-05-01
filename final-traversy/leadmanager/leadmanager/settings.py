@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'frontend',
     'corsheaders',
-    'lockers'
+    'lockers',
+    'locker',
 ]
 
 MIDDLEWARE = [
