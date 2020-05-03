@@ -8,3 +8,5 @@ class Lead(models.Model):
     landmarksfield =  models.CharField(max_length=100, blank=True, null=True)
     lockerfield= models.CharField(max_length=100 ,blank=True ,null=True)
     query= models.CharField(max_length=100 ,blank=True, null=True)
+    lattitude=models.CharField(max_length=100, blank=True ,null=True)
+    longitude=models.CharField(max_length=100, blank=True ,null=True)

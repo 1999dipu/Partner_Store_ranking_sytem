@@ -6,7 +6,9 @@ export class Form extends Component {
         zip:'',
         landmark:'',
         lockername:'',
-        query:''
+        query:'',
+        lat:'',
+        lng:'',
         
         
 
@@ -19,24 +21,77 @@ export class Form extends Component {
         this.props.searchbylandmark(this.state.landmark);
         this.props.searchbylockername(this.state.lockername);
         this.props.queryby(this.state.query);
-        let data = JSON.stringify({
-            'addressfield':this.state.address,
-            'zipfield':this.state.zip,
-            'landmarksfield':this.state.landmark,
-            'lockerfield':this.state.lockername,
-            'query':this.state.query,
-
-        })
+        if(this.state.query=="address" && this.state.address)
+        {
+            let u=this.state.address
+            const response = fetch(`https://api.opencagedata.com/geocode/v1/json?q=${u}&key=27a5cac087534b4ea0d06b147273f65a`)
+            .then(response => response.json())
+            .then((commit)=>{
+            console.log(commit);
+             this.setState({lat:commit.results[0].geometry.lat});
+            this.setState({lng:commit.results[0].geometry.lng});
+              }
+                 )
     
-        Axios.post("/api/leads/", data, {
-            headers: {
-                'Content-Type': 'application/json',
-            }})
-            .then(res => console.log(res))
-            .catch(error => console.err(error))
-            console.log("hello");
-        }
    
+              console.log(response)
+        }
+        if(this.state.query=="storeZip" && this.state.zip )
+        {
+            let u=this.state.zip
+            const response = fetch(`https://api.opencagedata.com/geocode/v1/json?q=${u}&key=27a5cac087534b4ea0d06b147273f65a`)
+             .then(response => response.json())
+             .then((commit)=>{
+               console.log(commit);
+               this.setState({lat:commit.results[0].geometry.lat});
+              this.setState({lng:commit.results[0].geometry.lng});
+  
+       
+    }
+    
+      )
+      console.log(response)
+        }
+        if(this.state.query=="landmark" && this.state.landmark)
+        {
+            let u=this.state.landmark
+            const response = fetch(`https://api.opencagedata.com/geocode/v1/json?q=${u}&key=27a5cac087534b4ea0d06b147273f65a`)
+            .then(response => response.json())
+            .then((commit)=>{
+             console.log(commit);
+            this.setState({lat:commit.results[0].geometry.lat});
+            this.setState({lng:commit.results[0].geometry.lng});
+  
+       
+    }
+    
+      )
+      console.log(response)
+        }
+        console.log("123456789")
+        
+        }
+   onpost=()=>{
+       if(this.state.lat && this.state.lng){
+    let data = JSON.stringify({
+        'addressfield':this.state.address,
+        'zipfield':this.state.zip,
+        'landmarksfield':this.state.landmark,
+        'lockerfield':this.state.lockername,
+        'query':this.state.query,
+        'lattitude':(this.state.lat),
+        'longitude':(this.state.lng),
+
+    })
+
+    Axios.post("/api/leads/", data, {
+        headers: {
+            'Content-Type': 'application/json',
+        }})
+        .then(res => console.log(res))
+        .catch(error => console.error(error))
+        console.log("hello");}
+   }
     onSiteChanged=(e) => this.setState({ query: e.target.value});
     onChangeadd=(e)=>this.setState({address:e.target.value});
     onChangezip=(e)=>this.setState({zip:e.target.value});
@@ -141,8 +196,10 @@ export class Form extends Component {
               </div>
 
               </form>
+              {this.onpost()}
           </div>
         )
+        
     }
 }
 
