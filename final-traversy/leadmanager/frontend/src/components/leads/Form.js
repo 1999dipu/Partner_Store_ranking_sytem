@@ -21,6 +21,7 @@ export class Form extends Component {
         this.props.searchbylandmark(this.state.landmark);
         this.props.searchbylockername(this.state.lockername);
         this.props.queryby(this.state.query);
+        
         if(this.state.query=="address" && this.state.address)
         {
             let u=this.state.address
@@ -30,6 +31,7 @@ export class Form extends Component {
             console.log(commit);
              this.setState({lat:commit.results[0].geometry.lat});
             this.setState({lng:commit.results[0].geometry.lng});
+            this.onpost();
               }
                  )
     
@@ -45,6 +47,7 @@ export class Form extends Component {
                console.log(commit);
                this.setState({lat:commit.results[0].geometry.lat});
               this.setState({lng:commit.results[0].geometry.lng});
+              this.onpost();
   
        
     }
@@ -61,6 +64,7 @@ export class Form extends Component {
              console.log(commit);
             this.setState({lat:commit.results[0].geometry.lat});
             this.setState({lng:commit.results[0].geometry.lng});
+            this.onpost();
   
        
     }
@@ -69,6 +73,7 @@ export class Form extends Component {
       console.log(response)
         }
         console.log("123456789")
+        
         
         }
    onpost=()=>{
@@ -196,7 +201,7 @@ export class Form extends Component {
               </div>
 
               </form>
-              {this.onpost()}
+              
           </div>
         )
         
