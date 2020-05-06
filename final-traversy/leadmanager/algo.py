@@ -39,4 +39,5 @@ cur.executemany(qryInsrt,lstRow)
 
 for row in cur.execute('select * from locker_rankinglist;'):
     print(row)
+con.commit()
 con.close()
