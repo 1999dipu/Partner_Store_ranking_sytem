@@ -34,6 +34,13 @@ class App extends Component {
             />
             
             <LockersList/>
+
+            <Route path="listview/" render={
+              ()=>{
+                return <h1>List View is here</h1>;
+              }
+            }
+            />
           </div>
         </Fragment>
       </Router>
