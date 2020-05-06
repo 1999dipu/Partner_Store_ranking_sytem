@@ -2,6 +2,7 @@ import React, { Component, Fragment } from "react";
 import ReactDOM from "react-dom";
 import Form from "./leads/Form";
 import LockersList from './LockersList';
+import List from './List';
 import {BrowserRouter as Router,Switch,Route} from "react-router-dom";
 class App extends Component {
   searchbyaddress=(address) =>{
@@ -25,22 +26,14 @@ class App extends Component {
       <Router>
         <Fragment>
           <div className="container">
-            <Form 
-            searchbyaddress={this.searchbyaddress}
-            searchbyzip={this.searchbyzip}
-            searchbylandmark={this.searchbylandmark}
-            searchbylockername={this.searchbylockername}
-            queryby={this.queryby}
-            />
-            
-            <LockersList/>
-
-            <Route path="listview/" render={
-              ()=>{
-                return <h1>List View is here</h1>;
-              }
-            }
-            />
+            <Route path="/" component={() => <Form 
+              searchbyaddress={this.searchbyaddress}
+              searchbyzip={this.searchbyzip}
+              searchbylandmark={this.searchbylandmark}
+              searchbylockername={this.searchbylockername}
+              queryby={this.queryby}
+              />}/>
+            <Route path="/listview" component={List}/>
           </div>
         </Fragment>
       </Router>

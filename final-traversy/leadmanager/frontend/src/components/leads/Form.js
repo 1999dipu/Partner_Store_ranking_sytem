@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Axios from "axios";
+import {withRouter} from 'react-router-dom';
 
 export class Form extends Component {        
     state={
@@ -103,6 +104,12 @@ export class Form extends Component {
     onChangezip=(e)=>this.setState({zip:e.target.value});
     onChangeland=(e)=>this.setState({landmark:e.target.value});
     onChangelocker=(e)=>this.setState({lockername:e.target.value});
+
+    nextPath(path) {
+        this.props.history.push(path);
+      }
+
+      
     render() {
         return (
           <div>
@@ -188,7 +195,7 @@ export class Form extends Component {
                       <tr>
                           <td>
                               <br/>
-                              <button type="submit" value="Submit" style={{background: 'orange',borderRadius:'8px'}}>
+                              <button type="submit" value="Submit" style={{background: 'orange',borderRadius:'8px'}} onClick={() => this.nextPath('/listview') }>
                                  Search
                                </button>
                                <br/><br/>
@@ -209,4 +216,4 @@ export class Form extends Component {
     }
 }
 
-export default Form
+export default withRouter(Form)

@@ -1,0 +1,14 @@
+import React, { Component } from "react";
+
+class List extends Component {
+  
+  render() {
+    return (
+      <div>
+        <h1>Hi there i am a list component</h1>
+      </div>
+    );
+  }
+}
+
+export default List;
