@@ -20,5 +20,5 @@ urlpatterns = [
      path('', include('frontend.urls')),
     path('', include('leads.urls')),
     path('admin/', admin.site.urls),
-    path('', include('lockers.urls')),
+    path('', include('locker.urls')),
 ]
