@@ -33,7 +33,7 @@ class App extends Component {
               searchbylockername={this.searchbylockername}
               queryby={this.queryby}
               />}/>
-            <Route path="/listview" component={List}/>
+              <Route path="/listview" component={List}/>
           </div>
         </Fragment>
       </Router>

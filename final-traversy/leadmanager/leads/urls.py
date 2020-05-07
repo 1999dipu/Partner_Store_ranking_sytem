@@ -1,9 +1,6 @@
-# we will use routers from rest frame work to specify url
-from rest_framework import routers
-from .api import LeadViewSet
+from django.urls import path
+from . import views
 
-router=routers.DefaultRouter()
-router.register('api/leads',LeadViewSet,'leads')
-
-urlpatterns=router.urls 
-#all urls that are registerd
+urlpatterns = [
+    path('api/leads/', views.LeadList.as_view()),
+]
