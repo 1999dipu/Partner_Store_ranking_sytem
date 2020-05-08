@@ -39,6 +39,7 @@ export class Form extends Component {
     
    
               console.log(response)
+              
         }
         if(this.state.query=="storeZip" && this.state.zip )
         {
@@ -95,9 +96,10 @@ export class Form extends Component {
         headers: {
             'Content-Type': 'application/json',
         }})
-        .then(res => console.log(res))
+        .then(res => {console.log(res);location.reload(true);})
         .catch(error => console.error(error))
-        console.log("hello");}
+        console.log("hello");
+    }
    }
     onSiteChanged=(e) => this.setState({ query: e.target.value});
     onChangeadd=(e)=>this.setState({address:e.target.value});

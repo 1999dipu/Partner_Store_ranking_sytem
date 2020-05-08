@@ -1,6 +1,17 @@
 import sqlite3
 
-def algoFun():
+def algoFun(qry):
+
+    """
+    key: addressfield Value: 166, MUKUND NAGAR GHAZIABAD
+    key: zipfield Value: 201001
+    key: landmarksfield Value: 
+    key: lockerfield Value: 
+    key: query Value: storeZip
+    key: lattitude Value: 28.674865
+    key: longitude Value: 77.4318992
+    """
+    zipcode=qry["zipfield"]
     con = sqlite3.connect("db.sqlite3")
     cur = con.cursor()
     cur.execute('delete from locker_rankinglist')
@@ -15,7 +26,8 @@ def algoFun():
             locker_availability.status 
             from locker_onboard,locker_availability 
             where 
-            locker_availability.lockerid_id = locker_onboard.lockerid;"""
+            locker_availability.lockerid_id = locker_onboard.lockerid
+            and locker_onboard.zipcode = """ + zipcode+";"
     qryInsrt = """insert into locker_rankinglist 
                 (lockerid_id,
                 name,
@@ -36,7 +48,8 @@ def algoFun():
         
     cur.executemany(qryInsrt,lstRow)
 
-    for row in cur.execute('select * from locker_rankinglist;'):
-        print(row)
+    #for row in cur.execute('select * from locker_rankinglist;'):
+     #   print(row)
+    print("RANKING LIST UPDATED")
     con.commit()
     con.close()
