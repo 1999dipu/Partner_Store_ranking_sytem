@@ -4,8 +4,8 @@ from django.core.validators import MinLengthValidator
 # Create your models here.
 class Onboard(models.Model):
 	lockerid	=models.IntegerField(primary_key=True)
-	name		=models.CharField(max_length=250,validators=[RegexValidator(r'^[a-z-A-Z ]+$',message='Numbers not allowed')])
-	country		=models.CharField(max_length=100,validators=[RegexValidator(r'^[a-zA-Z ]+$',message='Numbers not allowed')])
+	name		=models.CharField(max_length=250)
+	country		=models.CharField(max_length=100,validators=[RegexValidator(r'^[a-zA-Z ]+$',message='Numbers not allowed')],default="India")
 	address 	=models.TextField()
 	zipcode 	=models.CharField(max_length=6,validators=[RegexValidator(r'^\d{1,10}$',message='Only numbers are allowed'), MinLengthValidator(6)])
 	total_slots =models.IntegerField()
@@ -19,7 +19,7 @@ class Throughput(models.Model):
 	throughput  =models.FloatField()
 
 class Availability(models.Model):
-	lockerid		=models.ForeignKey(Onboard, on_delete=models.CASCADE)
+	lockerid		=models.OneToOneField(Onboard, on_delete=models.CASCADE,primary_key=True)
 	non_del_days	=models.CharField('Non delivery days',max_length=7,default='0000000',validators=[RegexValidator(r'^\d{1,10}$',message='Letters not permissible'),MinLengthValidator(7)])
 	timings_open 	=models.TimeField()
 	timings_closed 	=models.TimeField()
@@ -31,6 +31,11 @@ class Occupancy(models.Model):
 	occupancy		=models.FloatField()	
 	class Meta:
 		unique_together=('lockerid','date')
+
+class Coordinates(models.Model):
+	lockerid		=models.OneToOneField(Onboard, on_delete=models.CASCADE,primary_key=True)
+	latitude		=models.FloatField()
+	longitude		=models.FloatField()
 
 class Rankinglist(models.Model):
 	lockerid		=models.ForeignKey(Onboard, on_delete=models.CASCADE)
