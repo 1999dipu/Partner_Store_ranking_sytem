@@ -189,7 +189,7 @@ export class Form extends Component {
                           </td>
                           <td valign="top">
                               <input type="text" name="storeName" size="30" maxLength="50" value={this.state.lockername} onChange={this.onChangelocker}  onClick={()=>this.state.query="lockername"}/><br/>
-                            <font size="1">&nbsp;e.g. Saket Nagar</font>
+                            <font size="1">&nbsp;e.g. Shipra</font>
                             
                                                        
                           </td>
