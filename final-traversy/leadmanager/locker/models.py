@@ -48,6 +48,7 @@ class Rankinglist(models.Model):
 	timings_open 	=models.TimeField()
 	timings_closed 	=models.TimeField()
 	status			=models.BooleanField()
+	dist            =models.FloatField(default=0.0)
 	class Meta:
 		unique_together=('lockerid','rank')
 
