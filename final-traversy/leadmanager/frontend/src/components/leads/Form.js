@@ -153,7 +153,7 @@ export class Form extends Component {
                           </td>
                           <td valign="top">
                               <input type="text" name="address" maxLength="50" value={this.state.address} onChange={this.onChangeadd} onClick={()=>this.state.query="address"} /><br/>
-                            <font size="1">e.g. 333Boren Ave N,Seattle</font> 
+                            <font size="1">e.g. Plot No–M 03, Sector 18, Noida</font> 
                            
                                                        
                           </td>
@@ -165,7 +165,7 @@ export class Form extends Component {
                           </td>
                           <td valign="top">
                               <input type="text" name="storeZip" size="6" maxLength="6" value={this.state.zip} onChange={this.onChangezip} onClick={()=>this.state.query="storeZip"} />
-                            <font size="1">&nbsp;e.g. 98109</font><br/>
+                            <font size="1">&nbsp;e.g. 201301</font><br/>
                             
                                                        
                           </td>
@@ -177,7 +177,7 @@ export class Form extends Component {
                           </td>
                           <td valign="top">
                               <input type="text" name="landmark" size="30" maxLength="50" value={this.state.landmark} onChange={this.onChangeland} onClick={()=>this.state.query="landmark"}/><br/>
-                            <font size="1">&nbsp;e.g. Space Needle</font>
+                            <font size="1">&nbsp;e.g. Ghaziabad</font>
                             
                                                        
                           </td>
@@ -189,7 +189,7 @@ export class Form extends Component {
                           </td>
                           <td valign="top">
                               <input type="text" name="storeName" size="30" maxLength="50" value={this.state.lockername} onChange={this.onChangelocker}  onClick={()=>this.state.query="lockername"}/><br/>
-                            <font size="1">&nbsp;e.g. Juno</font>
+                            <font size="1">&nbsp;e.g. Shipra</font>
                             
                                                        
                           </td>

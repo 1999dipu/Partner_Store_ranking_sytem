@@ -85,6 +85,7 @@ class List extends Component {
             <th>Days Open</th>
             <th>Opening Time</th>
             <th>Closing Time</th>
+            <th>Distance</th>
           </tr>
         </thead>
         <tbody>
@@ -96,6 +97,7 @@ class List extends Component {
           <td>{this.toDays(x.non_del_days)}</td>
           <td>{x.timings_open}</td>
           <td>{x.timings_closed}</td>
+          <td>{x.dist.toFixed(3)}</td>
          </tr> 
         ))}
         </tbody>

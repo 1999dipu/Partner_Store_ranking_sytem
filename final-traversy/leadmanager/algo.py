@@ -1,4 +1,5 @@
 import sqlite3
+import math
 
 def algoFun(qry):
 
@@ -12,6 +13,11 @@ def algoFun(qry):
     key: longitude Value: 77.4318992
     """
     zipcode=qry["zipfield"]
+    x=qry["lattitude"]
+    y=qry["longitude"]
+    print(x,y)
+    print()
+    print()
     con = sqlite3.connect("db.sqlite3")
     cur = con.cursor()
     cur.execute('delete from locker_rankinglist')
@@ -23,10 +29,13 @@ def algoFun(qry):
             locker_availability.non_del_days,
             locker_availability.timings_open,
             locker_availability.timings_closed,
-            locker_availability.status 
-            from locker_onboard,locker_availability 
+            locker_availability.status,
+            locker_coordinates.latitude,
+            locker_coordinates.longitude 
+            from locker_onboard,locker_availability,locker_coordinates
             where 
             locker_availability.lockerid_id = locker_onboard.lockerid
+            and locker_onboard.lockerid = locker_coordinates.lockerid_id
             and locker_onboard.zipcode = """ + zipcode+";"
     qryInsrt = """insert into locker_rankinglist 
                 (lockerid_id,
@@ -38,18 +47,21 @@ def algoFun(qry):
                 timings_open,
                 timings_closed,
                 status,
-                rank) values (?,?,?,?,?,?,?,?,?,?);"""
+                rank,
+                dist) values (?,?,?,?,?,?,?,?,?,?,?);"""
     rank=1
     lstRow=[]
     for row in cur.execute(qry):
+        dist=(row[9]-x)*(row[9]-x)+(row[10]-y)*(row[10]-y)
+        row=row[:9]
         row+=(rank,)
         rank=rank+1
+        dist=math.sqrt(dist)
+        row+=(dist,)
         lstRow.append(row)
         
     cur.executemany(qryInsrt,lstRow)
 
-    #for row in cur.execute('select * from locker_rankinglist;'):
-     #   print(row)
     print("RANKING LIST UPDATED")
     con.commit()
     con.close()
