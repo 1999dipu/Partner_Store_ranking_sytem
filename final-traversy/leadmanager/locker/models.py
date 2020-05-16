@@ -9,6 +9,9 @@ class Onboard(models.Model):
 	address 	=models.TextField()
 	zipcode 	=models.CharField(max_length=6,validators=[RegexValidator(r'^\d{1,10}$',message='Only numbers are allowed'), MinLengthValidator(6)])
 	total_slots =models.IntegerField()
+	latitude	=models.FloatField(default="0.0000000")
+	longitude	=models.FloatField(default="0.0000000")
+
 
 class Rating(models.Model):
 	lockerid	=models.ForeignKey(Onboard, on_delete=models.CASCADE)
@@ -31,11 +34,6 @@ class Occupancy(models.Model):
 	occupancy		=models.FloatField()	
 	class Meta:
 		unique_together=('lockerid','date')
-
-class Coordinates(models.Model):
-	lockerid		=models.OneToOneField(Onboard, on_delete=models.CASCADE,primary_key=True)
-	latitude		=models.FloatField()
-	longitude		=models.FloatField()
 
 class Rankinglist(models.Model):
 	lockerid		=models.ForeignKey(Onboard, on_delete=models.CASCADE)
