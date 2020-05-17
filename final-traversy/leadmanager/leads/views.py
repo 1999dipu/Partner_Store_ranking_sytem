@@ -4,7 +4,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from django.http import Http404
-import algo
+from algorithm import algo 
 
 class LeadList(APIView):
     #List all Leads or create a new Lead

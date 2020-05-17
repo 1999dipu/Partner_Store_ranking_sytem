@@ -33,8 +33,8 @@ def algoFun(qry):
             locker_onboard.longitude 
             from locker_onboard,locker_availability
             where 
-            locker_availability.lockerid_id = locker_onboard.lockerid
-            and locker_onboard.zipcode = """ + zipcode+";"
+            locker_availability.lockerid_id = locker_onboard.lockerid"""
+            #and locker_onboard.zipcode = """ + zipcode+";"
     qryInsrt = """insert into locker_rankinglist 
                 (lockerid_id,
                 name,
@@ -56,10 +56,12 @@ def algoFun(qry):
         rank=rank+1
         dist=math.sqrt(dist)
         row+=(dist,)
-        lstRow.append(row)
+        if(dist<=3):
+            lstRow.append(row)
         
     cur.executemany(qryInsrt,lstRow)
 
-    print("RANKING LIST UPDATED")
+
+    print("RANKING LIST IS UPDATED")
     con.commit()
     con.close()
