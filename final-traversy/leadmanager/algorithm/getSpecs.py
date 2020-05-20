@@ -4,7 +4,8 @@ def specs(lid):
     cur = con.cursor()
     lid=str(lid)
     qry="""
-    select locker_availability.status, 
+    select 
+    locker_availability.status, 
     locker_occupancy.occupancy,
     locker_rating.rating,
     locker_throughput.throughput

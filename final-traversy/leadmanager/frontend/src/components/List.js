@@ -86,6 +86,7 @@ class List extends Component {
             <th>Opening Time</th>
             <th>Closing Time</th>
             <th>Distance</th>
+            <th>Score</th>
           </tr>
         </thead>
         <tbody>
@@ -98,6 +99,7 @@ class List extends Component {
           <td>{x.timings_open}</td>
           <td>{x.timings_closed}</td>
           <td>{x.dist.toFixed(3)}</td>
+          <td>{x.score.toFixed(3)}</td>
          </tr> 
         ))}
         </tbody>

@@ -14,7 +14,8 @@ def updateR(rows):
                 timings_closed,
                 status,
                 dist,
-                rank) values (?,?,?,?,?,?,?,?,?,?,?);"""
+                rank,
+                score) values (?,?,?,?,?,?,?,?,?,?,?,?);"""
     cur.executemany(qryInsrt,rows)
     con.commit()
     print("RANKING DONE")
