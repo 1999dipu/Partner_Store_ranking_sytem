@@ -8,7 +8,6 @@ def algoFun(qry):
     x=qry["lattitude"]
     y=qry["longitude"]
     lockers=getRows.getrows(x,y)
-
     #GETTING SPECIFICATIONS
     #specLocker: [[lockerlockers_id,occupancy,rating,throughput,dist],..]
     specLocker=[]
