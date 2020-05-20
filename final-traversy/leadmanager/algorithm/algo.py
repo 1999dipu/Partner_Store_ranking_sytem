@@ -1,40 +1,13 @@
 import sqlite3
-import math
-def algoFun(qry):
+from algorithm import getRows
 
-    """
-    key: addressfield Value: 166, MUKUND NAGAR GHAZIABAD
-    key: zipfield Value: 201001
-    key: landmarksfield Value: 
-    key: lockerfield Value: 
-    key: query Value: storeZip
-    key: lattitude Value: 28.674865
-    key: longitude Value: 77.4318992
-    """
-    zipcode=qry["zipfield"]
+def algoFun(qry):
     x=qry["lattitude"]
     y=qry["longitude"]
-    print(x,y)
-    print()
-    print()
+    rows=getRows.getrows(x,y)
     con = sqlite3.connect("db.sqlite3")
     cur = con.cursor()
     cur.execute('delete from locker_rankinglist')
-    qry="""select locker_availability.lockerid_id,
-            locker_onboard.name,
-            locker_onboard.country,
-            locker_onboard.address,
-            locker_onboard.zipcode,
-            locker_availability.non_del_days,
-            locker_availability.timings_open,
-            locker_availability.timings_closed,
-            locker_availability.status,
-            locker_onboard.latitude,
-            locker_onboard.longitude 
-            from locker_onboard,locker_availability
-            where 
-            locker_availability.lockerid_id = locker_onboard.lockerid"""
-            #and locker_onboard.zipcode = """ + zipcode+";"
     qryInsrt = """insert into locker_rankinglist 
                 (lockerid_id,
                 name,
@@ -45,23 +18,9 @@ def algoFun(qry):
                 timings_open,
                 timings_closed,
                 status,
-                rank,
-                dist) values (?,?,?,?,?,?,?,?,?,?,?);"""
-    rank=1
-    lstRow=[]
-    for row in cur.execute(qry):
-        dist=(row[9]-x)*(row[9]-x)+(row[10]-y)*(row[10]-y)
-        row=row[:9]
-        row+=(rank,)
-        rank=rank+1
-        dist=math.sqrt(dist)
-        row+=(dist,)
-        if(dist<=3):
-            lstRow.append(row)
-        
-    cur.executemany(qryInsrt,lstRow)
-
-
-    print("RANKING LIST IS UPDATED")
+                dist,
+                rank) values (?,?,?,?,?,?,?,?,?,?,?);"""
+    cur.executemany(qryInsrt,rows)
     con.commit()
+    print("RANKING DINE")
     con.close()
