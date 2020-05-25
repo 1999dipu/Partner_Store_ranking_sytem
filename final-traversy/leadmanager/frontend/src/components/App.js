@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from "react";
 import ReactDOM from "react-dom";
+import Onboarding from "./leads/Onboarding";
 import Form from "./leads/Form";
 import LockersList from './LockersList';
 import List from './List';
@@ -26,13 +27,21 @@ class App extends Component {
       <Router>
         <Fragment>
           <div className="container">
-            <Route path="/" component={() => <Form 
+          <Route path="/" component={() => <Onboarding
               searchbyaddress={this.searchbyaddress}
               searchbyzip={this.searchbyzip}
               searchbylandmark={this.searchbylandmark}
               searchbylockername={this.searchbylockername}
               queryby={this.queryby}
               />}/>
+            <Route path="/" component={() => <Form
+              searchbyaddress={this.searchbyaddress}
+              searchbyzip={this.searchbyzip}
+              searchbylandmark={this.searchbylandmark}
+              searchbylockername={this.searchbylockername}
+              queryby={this.queryby}
+              />}/>
+             
               <Route path="/listview" component={List}/>
           </div>
         </Fragment>
