@@ -6,3 +6,6 @@ class RankingListSerializer(serializers.ModelSerializer):
         model = Rankinglist
         fields = '__all__'
 
+
+class OnboardSerializer(serializers.Serializer):
+    content = serializers.CharField(max_length=200)

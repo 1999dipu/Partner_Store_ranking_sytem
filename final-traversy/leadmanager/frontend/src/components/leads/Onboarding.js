@@ -79,7 +79,20 @@ export class Onboarding extends Component {
         .catch(error => console.error(error))
         console.log("hello");
     }*/
+    if(true){
+        let data = JSON.stringify({
+            'content':this.state.lockername,
+        })
+    
+        Axios.post("/api/onboard/", data, {
+            headers: {
+                'Content-Type': 'application/json',
+            }})
+            .then(res => {console.log(res);})
+            .catch(error => console.error(error))
+            console.log("hello");
    }
+}
     onSiteChanged=(e) => this.setState({ query: e.target.value});
     onChangeadd=(e)=>this.setState({address:e.target.value});
     onChangezip=(e)=>this.setState({zip:e.target.value});
