@@ -23,7 +23,8 @@ export class Onboarding extends Component {
         rating:'2.5',
         throughput:'56',
         lat:'',
-        lng:''
+        lng:'',
+        daystring:''
         
 
     }
@@ -80,10 +81,29 @@ export class Onboarding extends Component {
         console.log("hello");
     }*/
     if(true){
-        let data = JSON.stringify({
-            'content':this.state.lockername,
+        let string=''
+        let Availability=this.state.Availability
+        Availability.forEach(avail=>{
+            if(avail.isChecked==true)
+            string+='1'
+            else
+            string+='0'
         })
-    
+        console.log(string)
+        this.setState({daystring:string})
+        
+        let data = JSON.stringify({
+            'address':this.state.address,
+            'zipcode':this.state.zip,
+            'lockername':this.state.lockername,
+            'num_of_locker':this.state.no_of_lockers,
+            'daystring':this.state.daystring,
+            'start_time':this.state.start_time,
+            'end_time':this.state.end_time,
+            'lattitude':(this.state.lat),
+            'longitude':(this.state.lng)
+        })
+        console.log(data)
         Axios.post("/api/onboard/", data, {
             headers: {
                 'Content-Type': 'application/json',
@@ -186,7 +206,7 @@ export class Onboarding extends Component {
                               <b>Number of Lockers:</b>
                           </td>
                           <td valign="top">
-                              <input type="text" name="landmark" size="2" maxLength="2" value={this.state.no_of_lockers} onChange={this.onChangenumberoflocker} onClick={()=>this.state.query="landmark"}/><br/>
+                              <input type="text" name="numoflockers" size="2" maxLength="2" value={this.state.no_of_lockers} onChange={this.onChangenumberoflocker} onClick={()=>this.state.query="landmark"}/><br/>
                             <font size="1">&nbsp;e.g. 30</font>
                             
                                                        
@@ -228,9 +248,9 @@ export class Onboarding extends Component {
                               <b>Timings</b>
                           </td>
                           <td valign="top">
-                              <input type="time" id="appt" name="appt" defaultValue="07:00" onChange={this.onChange_start_time}/>
+                              <input type="time"  defaultValue="07:00" onChange={this.onChange_start_time}/>
                               &nbsp;to&nbsp;
-                              <input type="time" id="appt" name="appt" defaultValue="22:00" onChange={this.onChange_end_time}/>
+                              <input type="time"  defaultValue="22:00" onChange={this.onChange_end_time}/>
 
                             
                                                        
