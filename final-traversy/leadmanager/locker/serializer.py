@@ -8,4 +8,13 @@ class RankingListSerializer(serializers.ModelSerializer):
 
 
 class OnboardSerializer(serializers.Serializer):
-    content = serializers.CharField(max_length=200)
+    address = serializers.CharField(max_length=200)
+    zipcode = serializers.CharField(max_length=200)
+    lockername = serializers.CharField(max_length=200)
+    num_of_locker = serializers.CharField(max_length=200)
+    start_time = serializers.CharField(max_length=200)
+    end_time = serializers.CharField(max_length=200)
+    num_of_locker = serializers.CharField(max_length=200)
+    daystring = serializers.CharField(max_length=200)
+    lattitude = serializers.CharField(max_length=200)
+    longitude = serializers.CharField(max_length=200)
