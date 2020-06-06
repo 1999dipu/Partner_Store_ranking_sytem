@@ -160,7 +160,7 @@ export class Onboarding extends Component {
                               <b> Country/Region:</b>
                           </td>
                           <td>
-                            <select name="country" id="country">
+                            <select name="country" id="country1">
                                 <option value="India">
                                     India
                                 </option>
@@ -219,25 +219,25 @@ export class Onboarding extends Component {
                           <td valign="top">
                               <div>
                               <input type="checkbox" key="1" id="Monday" name="Monday"   value="Monday" onChange={this.handleCheck}/>&nbsp;
-                                <label for="Monday"><font size="2">Monday</font></label>
+                                <label ><font size="2">Monday</font></label>
                                 &nbsp;&nbsp;
                                 <input type="checkbox" key="2" id="Tuesday" name="Tuesday"   value="Tuesday" onChange={this.handleCheck} />&nbsp;
-                                <label for="Tuesday"><font size="2">Tuesday</font></label>
+                                <label ><font size="2">Tuesday</font></label>
                                 &nbsp;&nbsp;
                                 <input type="checkbox" key="3" id="Wednesday" name="Wednesday"   value="Wednesday" onChange={this.handleCheck} />&nbsp;
-                                <label for="Wednesday"><font size="2">Wednesday</font></label>
+                                <label ><font size="2">Wednesday</font></label>
                                 &nbsp;&nbsp;
                                 <input type="checkbox" key="4" id="Thursday" name="Thursday"   value="Thursday" onChange={this.handleCheck} />&nbsp;
-                                <label for="Thursday"><font size="2">Thursday</font></label>
+                                <label ><font size="2">Thursday</font></label>
                                 &nbsp;&nbsp;
                                 <input type="checkbox" key="5" id="Friday" name="Friday"   value="Friday" onChange={this.handleCheck} />&nbsp;
-                                <label for="Friday"><font size="2">Friday</font></label>
+                                <label ><font size="2">Friday</font></label>
                                 &nbsp;&nbsp;
                                 <input type="checkbox" key="6" id="Saturday" name="Saturday"   value="Saturday" onChange={this.handleCheck}/>&nbsp;
-                                <label for="Saturday"><font size="2">Saturday</font></label>
+                                <label ><font size="2">Saturday</font></label>
                                 &nbsp;&nbsp;
                                 <input type="checkbox" key="7" id="Sunday" name="Sunday"   value="Sunday" onChange={this.handleCheck} />&nbsp;
-                                <label for="Sunday"><font size="2">Sunday</font></label>
+                                <label ><font size="2">Sunday</font></label>
 
                                 </div>
                                                        
