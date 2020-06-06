@@ -11,6 +11,7 @@ def createLocker(infoLocker):
     'longitude': 77.2219388}"""
     con = sqlite3.connect("db.sqlite3")
     cur = con.cursor()
+    #locker table
     pk=0
     for row in cur.execute('SELECT lockerid from locker_onboard'):
         if pk<row[0]:
@@ -38,6 +39,10 @@ def createLocker(infoLocker):
     l.append(row)
     print(l)
     cur.executemany(qryInsrt,l)
+    #occupancy table
+    #availability table
+    #rating table
+    #throughput table
     con.commit()
     con.close()
 
