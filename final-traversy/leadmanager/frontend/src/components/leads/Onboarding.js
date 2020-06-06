@@ -21,7 +21,7 @@ export class Onboarding extends Component {
         start_time:'07:00',
         end_time:'22:00',
         rating:'2.5',
-        throughput:'56',
+        throughput:'5.6',
         lat:'',
         lng:'',
         daystring:''

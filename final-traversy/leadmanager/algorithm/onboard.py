@@ -40,9 +40,43 @@ def createLocker(infoLocker):
     print(l)
     cur.executemany(qryInsrt,l)
     #occupancy table
+    roccupy=()
+    roccupy+=(pk,)
+    qry="""insert into locker_occupancy(
+            lockerid_id) values (?)"""
+    locc=[]
+    locc.append(roccupy)
+    print(locc)
+    cur.executemany(qry,locc)
     #availability table
+    ravail=()
+    ravail+=(pk,)
+    ravail+=(infoLocker["daystring"])
+    qryy="""insert into locker_availability
+            (lockerid_id,
+            non_del_days) values (?,?)"""
+    lavail=[]
+    lavail.append(ravail)
+    print(lavail)
+    cur.executemany(qryy,lavail)
     #rating table
+    rrating=()
+    rrating+=(pk,)
+    query="""insert into locker_rating
+            (lockerid_id) values (?)"""
+    lrating=[]
+    lrating.append(rrating)
+    print(lrating)
+    cur.executemany(query,lrating)
     #throughput table
+    rthrough=()
+    rthrough+=(pk,)
+    queryy="""insert into locker_rating
+            (lockerid_id) values (?)"""
+    lthrough=[]
+    lthrough.append(rthrough)
+    print(lthrough)
+    cur.executemany(queryy,lthrough)
     con.commit()
     con.close()
 
