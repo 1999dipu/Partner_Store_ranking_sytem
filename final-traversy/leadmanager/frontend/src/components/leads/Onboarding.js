@@ -112,6 +112,7 @@ export class Onboarding extends Component {
             .catch(error => console.error(error))
             console.log("hello");
    }
+
 }
     onSiteChanged=(e) => this.setState({ query: e.target.value});
     onChangeadd=(e)=>this.setState({address:e.target.value});
@@ -260,7 +261,8 @@ export class Onboarding extends Component {
                       <tr>
                           <td>
                               <br/>
-                              <button type="submit" value="Submit" style={{background: 'orange',borderRadius:'8px'}} >
+                             
+                              <button type="submit" style={{background: 'orange',borderRadius:'8px'}} onClick={() => this.nextPath('/results')}>
                                  Submit
                                </button>
                                <br/><br/>

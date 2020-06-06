@@ -2,8 +2,11 @@ import React, { Component, Fragment } from "react";
 import ReactDOM from "react-dom";
 import Onboarding from "./leads/Onboarding";
 import Form from "./leads/Form";
+import Buttons from "./Buttons";
+import Results from "./Results";
 import LockersList from './LockersList';
 import List from './List';
+import { Link } from 'react-router-dom'
 import {BrowserRouter as Router,Switch,Route,withRouter} from "react-router-dom";
 class App extends Component {
   searchbyaddress=(address) =>{
@@ -28,8 +31,10 @@ class App extends Component {
         <Fragment>
           <div className="container">
           
+          
+          <Route path="/" component={Buttons}/>
 
-            <Route path="/" component={() => <Form
+            <Route path="/search" component={() => <Form
               searchbyaddress={this.searchbyaddress}
               searchbyzip={this.searchbyzip}
               searchbylandmark={this.searchbylandmark}
@@ -38,6 +43,8 @@ class App extends Component {
               />}/>
              
               <Route path="/listview" component={List}/>
+              <Route path="/results" component={Results}/>
+              
 
               <Route path="/onboard" component={() => <Onboarding
                 searchbyaddress={this.searchbyaddress}
@@ -48,12 +55,7 @@ class App extends Component {
                 />}/>
 
 
-          <button style={{background: 'orange',borderRadius:'8px'}} onClick={() => this.nextPath('/listview') }>
-                Locker's Ranking List
-          </button>
-          <button  style={{background: 'orange',borderRadius:'8px'}} onClick={() => this.nextPath('/onboard') }>
-                Onboard Locker Portal
-          </button>
+          
           </div>
         </Fragment>
       </Router>
