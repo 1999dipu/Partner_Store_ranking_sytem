@@ -65,8 +65,9 @@ In addition to basic Python3 you need:
                             	Enter all the information being asked
 
                             	Go back to the admin panel and enter the username and password as created.
-
-8.You now have access to all the functionalities in this project.
 ```
+
+You now have access to all the functionalities in this project.
+
 ### GOOD LUCK!
 
