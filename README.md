@@ -28,11 +28,11 @@ In addition to basic Python3 you need:
 ```
 ## STEPS TO EXECUTE THE CODE: (as per Windows)
 ```
-1.	Open command prompt in your system.
+1.Open command prompt in your system.
 
-2.	Create an empty directory on your system.
+2.Create an empty directory on your system.
 
-3.	Create a virtual environment inside this directory as follows:
+3.Create a virtual environment inside this directory as follows:
 
              -python -m venv venv // virtual env created
 
@@ -40,19 +40,19 @@ In addition to basic Python3 you need:
 
              -Install all the dependencies as given above
 
-4.	Clone the project into the directory created in Step 2 (git clone “address of project”)
+4.Clone the project into the directory created in Step 2 (git clone “address of project”)
 
-5.	Make sure your virtual env is active and you’re inside the project directory (leadmanager)  
-        and start your Django server by executing the following command:
+5.Make sure your virtual env is active and you’re inside the project directory (leadmanager)  
+  and start your Django server by executing the following command:
          
              -python manage.py runserver 
 
              -Copy the address and paste it in your web browser
 
-6.	You can start using the project now.
+6.You can start using the project now.
 
-7.	In case you wish to access the admin panel to check the various tables in the system then open
-        the django admin panel by:
+7.In case you wish to access the admin panel to check the various tables in the system then open
+  the django admin panel by:
 
              -Append “/admin” in the server address (Step 5)
 
@@ -66,7 +66,7 @@ In addition to basic Python3 you need:
 
                             	Go back to the admin panel and enter the username and password as created.
 
-8.	You now have access to all the functionalities in this project.
+8.You now have access to all the functionalities in this project.
 ```
 ### GOOD LUCK!
 
