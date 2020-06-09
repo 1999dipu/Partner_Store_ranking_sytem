@@ -24,7 +24,7 @@ In addition to basic Python3 you need:
 
 -pip install djangorestframework==3.11.0
 
--pip install Django-cors-headers
+-pip install django-cors-headers
 ```
 ## STEPS TO EXECUTE THE CODE: (as per Windows)
 ```
