@@ -197,7 +197,7 @@ export class Form extends Component {
                       <tr>
                           <td>
                               <br/>
-                              <button type="submit" value="Submit" style={{background: 'orange',borderRadius:'8px'}} onClick={() => this.nextPath('/listview') }>
+                              <button type="submit" value="Submit" style={{background: 'orange',borderRadius:'8px'}} onClick={() => this.nextPath('/search/listview') }>
                                  Search
                                </button>
                                <br/><br/>

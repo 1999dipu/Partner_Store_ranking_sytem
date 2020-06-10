@@ -2,11 +2,11 @@ import React, { Component, Fragment } from "react";
 import ReactDOM from "react-dom";
 import Onboarding from "./leads/Onboarding";
 import Form from "./leads/Form";
+import LockersList from './LockersList';
 import Buttons from "./Buttons";
 import Results from "./Results";
-import LockersList from './LockersList';
-import List from './List';
 import { Link } from 'react-router-dom'
+import List from './List';
 import {BrowserRouter as Router,Switch,Route,withRouter} from "react-router-dom";
 class App extends Component {
   searchbyaddress=(address) =>{
@@ -31,7 +31,6 @@ class App extends Component {
         <Fragment>
           <div className="container">
           
-          
           <Route path="/" component={Buttons}/>
 
             <Route path="/search" component={() => <Form
@@ -42,9 +41,7 @@ class App extends Component {
               queryby={this.queryby}
               />}/>
              
-              <Route path="/listview" component={List}/>
-              <Route path="/results" component={Results}/>
-              
+              <Route path="/search/listview" component={List}/>
 
               <Route path="/onboard" component={() => <Onboarding
                 searchbyaddress={this.searchbyaddress}
@@ -54,8 +51,7 @@ class App extends Component {
                 queryby={this.queryby}
                 />}/>
 
-
-          
+                <Route path="/onboard/results" component={Results}/>
           </div>
         </Fragment>
       </Router>

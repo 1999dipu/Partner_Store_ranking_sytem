@@ -85,7 +85,7 @@ class List extends Component {
             <th>Days Open</th>
             <th>Opening Time</th>
             <th>Closing Time</th>
-            <th>Distance</th>
+            <th>Distance(Kms)</th>
             <th>Score</th>
           </tr>
         </thead>

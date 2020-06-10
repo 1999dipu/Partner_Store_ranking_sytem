@@ -21,7 +21,7 @@ export class Onboarding extends Component {
         start_time:'07:00',
         end_time:'22:00',
         rating:'2.5',
-        throughput:'5.6',
+        throughput:'56',
         lat:'',
         lng:'',
         daystring:''
@@ -112,7 +112,6 @@ export class Onboarding extends Component {
             .catch(error => console.error(error))
             console.log("hello");
    }
-
 }
     onSiteChanged=(e) => this.setState({ query: e.target.value});
     onChangeadd=(e)=>this.setState({address:e.target.value});
@@ -261,8 +260,7 @@ export class Onboarding extends Component {
                       <tr>
                           <td>
                               <br/>
-                             
-                              <button type="submit" style={{background: 'orange',borderRadius:'8px'}} onClick={() => this.nextPath('/results')}>
+                              <button type="submit" style={{background: 'orange',borderRadius:'8px'}} onClick={() => this.nextPath('/onboard/results')}>
                                  Submit
                                </button>
                                <br/><br/>

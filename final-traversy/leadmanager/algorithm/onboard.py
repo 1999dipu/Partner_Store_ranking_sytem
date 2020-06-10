@@ -1,4 +1,5 @@
 import sqlite3
+from datetime import date
 def createLocker(infoLocker):
     """{'address': 'Delhi', 
     'zipcode': '201001', 
@@ -42,8 +43,11 @@ def createLocker(infoLocker):
     #occupancy table
     roccupy=()
     roccupy+=(pk,)
+    today = date.today()
+    roccupy+=(today,)
+    roccupy+=(2.4,)
     qry="""insert into locker_occupancy(
-            lockerid_id) values (?)"""
+            lockerid_id,date,occupancy) values (?,?,?)"""
     locc=[]
     locc.append(roccupy)
     print(locc)
@@ -51,10 +55,15 @@ def createLocker(infoLocker):
     #availability table
     ravail=()
     ravail+=(pk,)
-    ravail+=(infoLocker["daystring"])
+    ravail+=(infoLocker['start_time'],)
+    ravail+=(infoLocker['end_time'],)
+    ravail+=(infoLocker["daystring"],)
+    ravail+=(True,)
+
     qryy="""insert into locker_availability
-            (lockerid_id,
-            non_del_days) values (?,?)"""
+            (lockerid_id,timings_open,
+            timings_closed,
+            non_del_days,status) values (?,?,?,?,?)"""
     lavail=[]
     lavail.append(ravail)
     print(lavail)
@@ -62,8 +71,9 @@ def createLocker(infoLocker):
     #rating table
     rrating=()
     rrating+=(pk,)
+    rrating+=(2.5,)
     query="""insert into locker_rating
-            (lockerid_id) values (?)"""
+            (lockerid_id,rating) values (?,?)"""
     lrating=[]
     lrating.append(rrating)
     print(lrating)
@@ -71,12 +81,14 @@ def createLocker(infoLocker):
     #throughput table
     rthrough=()
     rthrough+=(pk,)
-    queryy="""insert into locker_rating
-            (lockerid_id) values (?)"""
+    rthrough+=(2.5,)
+    queryy="""insert into locker_throughput
+            (lockerid_id,throughput) values (?,?)"""
     lthrough=[]
     lthrough.append(rthrough)
     print(lthrough)
     cur.executemany(queryy,lthrough)
+
     con.commit()
     con.close()
 
